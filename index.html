@@ -1,0 +1,611 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Yohana Gabriely | Autobiografia</title>
+
+<style>
+
+/* CONFIGURAÇÕES */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #faf7fc;
+    color: #51435a;
+    font-family: Arial, sans-serif;
+}
+
+/* MENU */
+
+.header {
+    width: 100%;
+    padding: 22px 8%;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 15px #00000008;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    color: #a477b5;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.nav {
+    display: flex;
+    gap: 25px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #65536a;
+    font-size: 14px;
+}
+
+/* CAPA */
+
+.hero {
+    min-height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(
+        135deg,
+        #eadcf2,
+        #fff8fc,
+        #f1e5f6
+    );
+}
+
+.hero-content {
+    max-width: 750px;
+}
+
+.hero h1 {
+    color: #986ba1;
+    font-size: clamp(40px, 8vw, 75px);
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: #76677d;
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+/* BOTÃO */
+
+.btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 13px 30px;
+    background: #ae83b8;
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: #91669c;
+    transform: translateY(-4px);
+}
+
+/* SEÇÕES */
+
+.section {
+    padding: 80px 8%;
+}
+
+.section-title {
+    text-align: center;
+    color: #a477b5;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #8b7a91;
+    margin-bottom: 45px;
+    font-size: 14px;
+}
+
+/* FLASH CARDS */
+
+.cards-container {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(230px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.flash-card {
+    height: 280px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.flash-card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform .7s;
+    transform-style: preserve-3d;
+}
+
+.flash-card.active .flash-card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+    box-shadow: 0 8px 25px #a477b522;
+}
+
+.card-front {
+    background: linear-gradient(
+        145deg,
+        #f0e2f5,
+        #ffffff
+    );
+}
+
+.card-front h3 {
+    color: #986ba1;
+    font-size: 23px;
+    margin-bottom: 15px;
+}
+
+.card-front span {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.card-front p {
+    color: #897991;
+    font-size: 13px;
+}
+
+.card-back {
+    background: #ad87b8;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.card-back p {
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.card-back small {
+    margin-top: 15px;
+    opacity: .8;
+}
+
+/* SOBRE */
+
+.about {
+    background: #f2eaf6;
+}
+
+.about-content {
+    max-width: 850px;
+    margin: auto;
+    text-align: justify;
+    line-height: 2;
+    color: #716477;
+    font-size: 15px;
+}
+
+/* FRASE */
+
+.quote {
+    background: linear-gradient(135deg, #eadcf2, #f8eaf3);
+    padding: 85px 20px;
+    text-align: center;
+}
+
+.quote h2 {
+    font-size: 28px;
+    color: #805e89;
+    font-style: italic;
+    max-width: 700px;
+    margin: auto;
+}
+
+/* RODAPÉ */
+
+.footer {
+    background: white;
+    padding: 30px;
+    text-align: center;
+    color: #99879f;
+    font-size: 13px;
+}
+
+/* RESPONSIVIDADE */
+
+@media(max-width: 650px) {
+
+    .header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav a {
+        font-size: 12px;
+    }
+
+    .section {
+        padding: 60px 7%;
+    }
+
+    .flash-card {
+        height: 260px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- MENU -->
+
+<div class="header">
+
+    <div class="logo">
+        Yohana Gabriely ♡
+    </div>
+
+    <div class="nav">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#cards">Minha história</a>
+    </div>
+
+</div>
+
+
+<!-- CAPA -->
+
+<div class="hero" id="inicio">
+
+    <div class="hero-content">
+
+        <h1>Yohana Gabriely</h1>
+
+        <p>
+            Uma história de lembranças, experiências,
+            desafios e descobertas.
+
+            <br>
+
+            Conheça um pouco sobre minha trajetória
+            e os capítulos que fazem parte de mim.
+        </p>
+
+        <a href="#cards" class="btn">
+            Descobrir minha história ♡
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- SOBRE MIM -->
+
+<div class="section about" id="sobre">
+
+    <h2 class="section-title">
+        Quem sou eu?
+    </h2>
+
+    <div class="about-content">
+
+        <p>
+            Meu nome é Yohana Gabriely, tenho 15 anos
+            e nasci em uma pequena cidade no interior
+            do Paraná. Atualmente, vivo em outra cidade,
+            ao lado dos meus pais adotivos.
+        </p>
+
+        <br>
+
+        <p>
+            Minha trajetória é marcada por experiências,
+            sentimentos e aprendizados. Ao longo dos anos,
+            enfrentei situações que influenciaram minha
+            maneira de enxergar o mundo e a mim mesma.
+        </p>
+
+        <br>
+
+        <p>
+            Esta página representa um pequeno espaço
+            para compartilhar minha história.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- FLASH CARDS -->
+
+<div class="section" id="cards">
+
+    <h2 class="section-title">
+        Minha história em Flash Cards
+    </h2>
+
+    <p class="section-subtitle">
+        Clique nos cartões para descobrir um pouco mais.
+    </p>
+
+
+    <div class="cards-container">
+
+
+        <!-- CARD 1 -->
+
+        <div class="flash-card" onclick="virarCard(this)">
+
+            <div class="flash-card-inner">
+
+                <div class="card-front">
+
+                    <span>🌷</span>
+
+                    <h3>Minha infância</h3>
+
+                    <p>
+                        Onde tudo começou...
+                    </p>
+
+                </div>
+
+                <div class="card-back">
+
+                    <p>
+                        Nasci no interior do Paraná e
+                        fui criada pelos meus pais adotivos.
+                        Minha infância foi marcada por
+                        mudanças familiares e descobertas
+                        sobre minhas origens.
+                    </p>
+
+                    <small>Clique para voltar</small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CARD 2 -->
+
+        <div class="flash-card" onclick="virarCard(this)">
+
+            <div class="flash-card-inner">
+
+                <div class="card-front">
+
+                    <span>🦋</span>
+
+                    <h3>Minha adolescência</h3>
+
+                    <p>
+                        Uma fase de descobertas...
+                    </p>
+
+                </div>
+
+                <div class="card-back">
+
+                    <p>
+                        Aos 11 anos, comecei a enfrentar
+                        situações difíceis na escola,
+                        incluindo bullying, inseguranças
+                        e problemas com minha autoestima.
+                    </p>
+
+                    <small>Clique para voltar</small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CARD 3 -->
+
+        <div class="flash-card" onclick="virarCard(this)">
+
+            <div class="flash-card-inner">
+
+                <div class="card-front">
+
+                    <span>💜</span>
+
+                    <h3>Meus sentimentos</h3>
+
+                    <p>
+                        Uma parte delicada da minha vida...
+                    </p>
+
+                </div>
+
+                <div class="card-back">
+
+                    <p>
+                        Passei por momentos de ansiedade,
+                        depressão e sofrimento emocional.
+                        Foram experiências difíceis que
+                        marcaram minha trajetória.
+                    </p>
+
+                    <small>Clique para voltar</small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CARD 4 -->
+
+        <div class="flash-card" onclick="virarCard(this)">
+
+            <div class="flash-card-inner">
+
+                <div class="card-front">
+
+                    <span>🌻</span>
+
+                    <h3>Meu presente</h3>
+
+                    <p>
+                        O capítulo que estou vivendo...
+                    </p>
+
+                </div>
+
+                <div class="card-back">
+
+                    <p>
+                        Atualmente, continuo buscando
+                        autoconhecimento, cuidado e
+                        compreensão sobre meus sentimentos.
+                    </p>
+
+                    <small>Clique para voltar</small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CARD 5 -->
+
+        <div class="flash-card" onclick="virarCard(this)">
+
+            <div class="flash-card-inner">
+
+                <div class="card-front">
+
+                    <span>✨</span>
+
+                    <h3>Meu futuro</h3>
+
+                    <p>
+                        Os capítulos que ainda virão...
+                    </p>
+
+                </div>
+
+                <div class="card-back">
+
+                    <p>
+                        Ainda tenho muito para descobrir,
+                        aprender e construir. Minha história
+                        continua sendo escrita.
+                    </p>
+
+                    <small>Clique para voltar</small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- FRASE FINAL -->
+
+<div class="quote">
+
+    <h2>
+        "Ainda existem capítulos da minha história
+        que nem eu mesma conheço."
+    </h2>
+
+</div>
+
+
+<!-- RODAPÉ -->
+
+<div class="footer">
+
+    <p>© 2026 — Yohana Gabriely</p>
+
+    <p>Minha história, minhas lembranças, meu caminho. ♡</p>
+
+</div>
+
+
+<!-- JAVASCRIPT DOS FLASH CARDS -->
+
+<script>
+
+function virarCard(card) {
+
+    card.classList.toggle("active");
+
+}
+
+</script>
+
+</body>
+</html>
